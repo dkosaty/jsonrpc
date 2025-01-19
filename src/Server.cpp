@@ -19,7 +19,7 @@ void Server::SetCallback(Callback callback) {
     _callback = std::move(callback);
 }
 
-void Server::HandleRequest(const std::string& /*message*/){
+void Server::HandleRequest(std::string_view /*message*/) {
     Response response;
 
 //    try {

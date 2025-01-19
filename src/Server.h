@@ -5,6 +5,8 @@
 #include "Request.h"
 #include "Response.h"
 
+#include <string_view>
+
 namespace JsonRpc {
 /// Сервер JSON-RPC
 class Server {
@@ -20,7 +22,7 @@ public:
 
 protected:
     /// Обрабатывает запрос
-    void HandleRequest(const std::string& message);
+    void HandleRequest(std::string_view message);
 
 private:
     /// Отправляет ответ

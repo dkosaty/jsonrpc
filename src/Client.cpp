@@ -23,7 +23,7 @@ void Client::SetCallback(Callback callback) {
     _callback = std::move(callback);
 }
 
-void Client::HandleResponse(const std::string& /*message*/) {
+void Client::HandleResponse(std::string_view /*message*/) {
     Response response;
 
 //    try {

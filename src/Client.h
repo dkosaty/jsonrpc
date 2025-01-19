@@ -5,6 +5,8 @@
 #include "Request.h"
 #include "Response.h"
 
+#include <string_view>
+
 namespace JsonRpc {
 /// Клиент JSON-RPC
 class Client {
@@ -23,7 +25,7 @@ public:
 
 protected:
     /// Обрабатывает ответ
-    void HandleResponse(const std::string& message);
+    void HandleResponse(std::string_view message);
 
 private:
     /// Отправитель сообщений

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <string_view>
 
 namespace JsonRpc {
 /// Абстрактный отправитель сообщений
@@ -10,7 +10,7 @@ public:
     virtual ~ISender() = default;
 
     /// Отправляет сообщение
-    virtual bool Send(const std::string& message) = 0;
+    virtual bool Send(std::string_view message) = 0;
 };
 
 using ISenderPtr = std::shared_ptr<ISender>;
