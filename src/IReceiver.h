@@ -2,13 +2,13 @@
 
 #include <functional>
 #include <memory>
-#include <string>
+#include <string_view>
 
 namespace JsonRpc {
 /// Абстрактный получатель сообщений
 class IReceiver {
 public:
-    using Callback = std::function<void(const std::string&)>;
+    using Callback = std::function<void(std::string_view)>;
 
 public:
     virtual ~IReceiver() = default;

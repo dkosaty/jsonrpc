@@ -12,7 +12,7 @@ Server::Server(ISenderPtr sender, IReceiverPtr receiver)
     if (!_receiver)
         throw std::runtime_error("Invalid receiver");
 
-    _receiver->SetCallback([this](const std::string & message) { HandleRequest(message); });
+    _receiver->SetCallback([this](std::string_view message) { HandleRequest(message); });
 }
 
 void Server::SetCallback(Callback callback) {
