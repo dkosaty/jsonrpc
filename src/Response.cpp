@@ -1,24 +1,24 @@
 #include "Response.h"
-//#include "IdVisitor.h"
+#include "IdVisitor.h"
 
 #include <jsoncpp/json/writer.h>
 
 namespace JsonRpc {
 Response::operator std::string() const {
-    Json::Value value;
+    Json::Value jsonValue;
 
-    value[Fields::Response::jsonrpc] = jsonRpc;
+    jsonValue[Fields::Response::jsonrpc] = jsonRpc;
 
     if (result)
-        value[Fields::Response::result] = *result;
+        jsonValue[Fields::Response::result] = *result;
 
 //    if (error)
-//        value[Fields::Response::error] = static_cast<Json::Value>(*error);
+//        jsonValue[Fields::Response::error] = static_cast<Json::Value>(*error);
 
-//    if (id)
-//        value[Fields::Request::id] = boost::apply_visitor(IdVisitor(), *id);
+    if (id)
+        jsonValue[Fields::Request::id] = std::visit(IdVisitor{}, *id);
 
-    return Json::FastWriter().write(value);
+    return Json::FastWriter().write(jsonValue);
 }
 
 //bool operator == (const Response& lhs, const Response& rhs)
